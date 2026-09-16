@@ -1,0 +1,1197 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. T. Sravanthi | Consultant General Physician | KIMS Hospitals Vizag</title>
+  <meta name="description" content="Official website of Dr. T. Sravanthi, MD (General Medicine, AMC), Consultant Physician at KIMS Hospitals, Visakhapatnam." />
+
+  <!-- Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #0a4d8c;
+      --primary-dark: #073460;
+      --secondary: #d92462;
+      --accent: #0284c7;
+      --accent-glow: rgba(2, 132, 199, 0.25);
+      --text: #1f2937;
+      --muted: #4b5563;
+      --bg-alt: #f0f7ff;
+      --border: #e2e8f0;
+      --wa: #25d366;
+      --insta: #e1306c;
+      --yt: #ff0000;
+      --card-shadow: 0 10px 30px -5px rgba(10, 77, 140, 0.08);
+      --card-hover: 0 22px 40px -10px rgba(10, 77, 140, 0.18);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text); background: #ffffff; line-height: 1.6; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ================= KEYFRAME ANIMATIONS ================= */
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes pulseRing {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+      70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    @keyframes ecgLine {
+      0% { stroke-dashoffset: 600; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    @keyframes rotateGradient {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal-up {
+      animation: slideInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Top Strip */
+    .top-strip {
+      background: linear-gradient(90deg, #073460, #0a4d8c, #0284c7);
+      color: #fff;
+      text-align: center;
+      padding: 9px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .nav-wrap {
+      max-width: 1150px;
+      margin: auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand i { color: var(--secondary); }
+
+    .btn-nav-call {
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-nav-call:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(10, 77, 140, 0.25);
+    }
+
+    /* Hero Section with ECG Track */
+    .hero {
+      position: relative;
+      background: radial-gradient(circle at 85% 20%, #e0f2fe 0%, #f0f7ff 45%, #ffffff 80%);
+      padding: 60px 20px 50px;
+      overflow: hidden;
+    }
+
+    /* Animated ECG line */
+    .ecg-container {
+      position: absolute;
+      top: 15%;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .ecg-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .ecg-path {
+      stroke: var(--primary);
+      stroke-width: 3;
+      fill: none;
+      stroke-dasharray: 600;
+      animation: ecgLine 3s linear infinite;
+    }
+
+    .hero-grid {
+      max-width: 1150px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+      padding: 5px 14px;
+      border-radius: 25px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.1);
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      line-height: 1.2;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .doctor-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .credentials-pills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .pill {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      transition: all 0.3s ease;
+    }
+
+    .pill:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+    }
+
+    .pill i { color: var(--accent); }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-main {
+      background: var(--wa);
+      color: #fff;
+      padding: 13px 26px;
+      border-radius: 10px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: none;
+      font-family: inherit;
+      cursor: pointer;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.55);
+    }
+
+    .btn-call {
+      background: var(--primary);
+      color: #fff;
+      padding: 13px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-call:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(10, 77, 140, 0.3);
+    }
+
+    /* Doctor Profile Floating Card */
+    .profile-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 30px 24px;
+      box-shadow: var(--card-shadow);
+      text-align: center;
+      animation: heroFloat 4.5s ease-in-out infinite;
+      position: relative;
+    }
+
+    /* Animated Avatar Border */
+    .avatar-wrapper {
+      position: relative;
+      width: 170px;
+      height: 170px;
+      margin: 0 auto 16px;
+    }
+
+    .avatar-glow-ring {
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--primary), var(--accent), var(--secondary), var(--primary));
+      animation: rotateGradient 6s linear infinite;
+      filter: blur(4px);
+      opacity: 0.75;
+    }
+
+    .doc-avatar {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      background: #fff;
+      border: 4px solid #fff;
+      z-index: 2;
+    }
+
+    .profile-card h3 {
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin-bottom: 2px;
+    }
+
+    .profile-card .designation {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .hospital-affiliation {
+      background: var(--bg-alt);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.86rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 16px;
+      border: 1px solid #e0f2fe;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .soc-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.15rem;
+      transition: all 0.3s ease;
+    }
+
+    .soc-btn:hover {
+      transform: translateY(-4px) scale(1.08);
+    }
+    .soc-insta { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+    .soc-yt { background: var(--yt); }
+    .soc-wa { background: var(--wa); }
+
+    /* Section Styling */
+    .section {
+      max-width: 1150px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .sec-title {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .sec-title h2 {
+      font-size: 2rem;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .sec-title p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    /* Timings & OP Details */
+    .op-banner {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--primary);
+      border-radius: 16px;
+      padding: 26px;
+      box-shadow: var(--card-shadow);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 45px;
+    }
+
+    .op-item h4 {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .op-item p {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .op-item small {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* Education & Credentials */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
+      margin-bottom: 45px;
+    }
+
+    .info-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--card-hover);
+    }
+
+    .info-card h3 {
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+
+    .info-card li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .info-card li i {
+      color: var(--accent);
+      margin-top: 4px;
+      font-size: 1rem;
+    }
+
+    /* Expertise Grid */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .exp-box {
+      background: #fafafa;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 24px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .exp-box:hover {
+      background: #fff;
+      border-color: var(--primary);
+      transform: translateY(-6px);
+      box-shadow: var(--card-hover);
+    }
+
+    .exp-box i {
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .exp-box:hover i {
+      transform: scale(1.15);
+      color: var(--accent);
+    }
+
+    .exp-box h4 {
+      font-size: 1.1rem;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .exp-box p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* Community Box */
+    .community-box {
+      background: linear-gradient(135deg, #075e54 0%, #128c7e 100%);
+      color: #fff;
+      border-radius: 18px;
+      padding: 34px;
+      margin: 50px auto 0;
+      display: grid;
+      grid-template-columns: 1.4fr 0.6fr;
+      gap: 24px;
+      align-items: center;
+      box-shadow: 0 12px 30px rgba(7, 94, 84, 0.2);
+    }
+
+    .community-box h3 {
+      font-size: 1.45rem;
+      margin-bottom: 8px;
+    }
+
+    .community-box p {
+      font-size: 0.92rem;
+      opacity: 0.95;
+    }
+
+    .btn-community {
+      background: #fff;
+      color: #075e54;
+      padding: 13px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-community:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Video Section */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+    }
+
+    .media-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s;
+    }
+
+    .media-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--card-hover);
+    }
+
+    .media-thumb {
+      position: relative;
+      height: 190px;
+      background: #0f172a;
+    }
+
+    .media-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.88;
+    }
+
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      background: rgba(255, 0, 0, 0.9);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+      transition: transform 0.2s;
+    }
+
+    .play-btn:hover {
+      transform: translate(-50%, -50%) scale(1.12);
+    }
+
+    .media-content {
+      padding: 20px;
+    }
+
+    .media-content h4 {
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .media-content p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .media-link {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Modal Form */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 16px;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    .modal-card {
+      background: #fff;
+      width: 100%;
+      max-width: 480px;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+      animation: slideInUp 0.35s ease-out;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .modal-header h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+
+    .modal-header p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .btn-close {
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: #94a3b8;
+      cursor: pointer;
+    }
+
+    .form-group { margin-bottom: 14px; }
+    .form-group label {
+      display: block;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(10, 77, 140, 0.12);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--wa);
+      color: #fff;
+      border: none;
+      padding: 13px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      margin-top: 8px;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+    }
+
+    /* Floating WhatsApp Button with Pulse Ring */
+    .float-wa {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--wa);
+      color: #fff;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      z-index: 1000;
+      animation: pulseRing 2s infinite;
+      cursor: pointer;
+      border: none;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 35px 20px;
+      font-size: 0.85rem;
+    }
+
+    footer a { color: #fff; }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .community-box { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .actions { flex-direction: column; }
+      .btn-main, .btn-call { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-strip">
+    <span><i class="fa-solid fa-hospital"></i> KIMS Hospitals, Seethammadhara, Visakhapatnam</span>
+    <span>&bull;</span>
+    <span><i class="fa-solid fa-clock"></i> OP Timings: Mon - Sat (10:00 AM - 05:00 PM)</span>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-wrap">
+      <div class="brand">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <span>Dr. T. Sravanthi</span>
+      </div>
+      <div class="nav-actions">
+        <a href="tel:08912827777" class="btn-nav-call"><i class="fa-solid fa-phone"></i> KIMS: 0891 2827777</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Animated ECG Trace Background -->
+    <div class="ecg-container">
+      <svg class="ecg-svg" viewBox="0 0 1200 80" preserveAspectRatio="none">
+        <path class="ecg-path" d="M0,40 L300,40 L320,10 L340,70 L360,25 L380,55 L400,40 L800,40 L820,10 L840,70 L860,25 L880,55 L900,40 L1200,40" />
+      </svg>
+    </div>
+
+    <div class="hero-grid">
+      <div class="reveal-up">
+        <div class="badge-bar">
+          <span class="badge">MD (General Medicine)</span>
+          <span class="badge">Cardiovascular & Stroke (RCP London)</span>
+          <span class="badge">ECFMG Certified</span>
+        </div>
+
+        <h1>Evidence-Based Healthcare with <span>Dr. T. Sravanthi</span></h1>
+        <p class="doctor-sub">Consultant General Physician & Primary Care Specialist</p>
+
+        <div class="credentials-pills">
+          <div class="pill"><i class="fa-solid fa-award"></i> Best Medical Officer Awardee (2 Yrs)</div>
+          <div class="pill"><i class="fa-solid fa-user-graduate"></i> Andhra Medical College (AMC)</div>
+          <div class="pill"><i class="fa-solid fa-shield-halved"></i> Critical & Inpatient Care Specialist</div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn-main" onclick="openBookingModal()">
+            <i class="fa-regular fa-calendar-check"></i> Book Consultation
+          </button>
+          <a href="tel:9052560661" class="btn-call">
+            <i class="fa-solid fa-phone"></i> Direct: 90525 60661
+          </a>
+        </div>
+      </div>
+
+      <!-- Doctor Portrait Card with Floating & Glowing Ring Effect -->
+      <div class="profile-card">
+        <div class="avatar-wrapper">
+          <div class="avatar-glow-ring"></div>
+          <!-- Save her uploaded photo as dr-sravanthi.jpg -->
+          <img src="dr-sravanthi.jpg" alt="Dr. T. Sravanthi" class="doc-avatar" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=80'" />
+        </div>
+
+        <h3>Dr. T. Sravanthi</h3>
+        <p class="designation">M.B.B.S, M.D. (Internal Medicine)</p>
+
+        <div class="hospital-affiliation">
+          <i class="fa-solid fa-building-user"></i> KIMS Hospitals, Gurudwara Lane, Seethammadhara, Vizag-13
+        </div>
+
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 6px;">Connect & Watch Health Videos:</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/sravanthi.turpati?stkn=OTZlbms1enhmbGVj" target="_blank" class="soc-btn soc-insta" title="Instagram Profile">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://youtu.be/HUKLj6rE9t8?si=eBnyLd-UxUHdN5HU" target="_blank" class="soc-btn soc-yt" title="YouTube Channel">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="https://wa.me/919052560661?text=Hello%20Dr.%20Sravanthi,%20I%20would%20like%20to%20consult%20you." target="_blank" class="soc-btn soc-wa" title="WhatsApp Direct">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OP Timings Banner -->
+  <section class="section" style="padding-top: 20px; padding-bottom: 20px;">
+    <div class="op-banner">
+      <div class="op-item">
+        <h4>Consultation Days</h4>
+        <p>Monday to Saturday</p>
+        <small>Sunday: Emergency / Closed</small>
+      </div>
+      <div class="op-item">
+        <h4>Out-Patient (OP) Hours</h4>
+        <p>10:00 AM – 05:00 PM</p>
+        <small>At KIMS Seethammadhara</small>
+      </div>
+      <div class="op-item">
+        <h4>Direct Mobile & Desk</h4>
+        <p>90525 60661</p>
+        <small>drsravanthimd@gmail.com</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education & Experience Timeline -->
+  <section class="section" style="padding-top: 0;">
+    <div class="sec-title">
+      <h2>Qualifications & Clinical Background</h2>
+      <p>Decade+ of clinical practice, academic excellence, and inpatient critical care experience</p>
+    </div>
+
+    <div class="edu-grid">
+      <!-- Credentials -->
+      <div class="info-card">
+        <h3><i class="fa-solid fa-graduation-cap"></i> Education & Certifications</h3>
+        <ul>
+          <li>
+            <i class="fa-solid fa-check-circle"></i>
+            <div><strong>MD in General Medicine</strong> – Andhra Medical College (AMC), Visakhapatnam</div>
+          </li>
+          <li>
+            <i class="fa-solid fa-check-circle"></i>
+            <div><strong>MBBS</strong> – ASRAM Medical College, Eluru</div>
+          </li>
+          <li>
+            <i class="fa-solid fa-check-circle"></i>
+            <div><strong>Cardiovascular Disease & Stroke</strong> – Certified by Royal College of Physicians (RCP), London</div>
+          </li>
+          <li>
+            <i class="fa-solid fa-check-circle"></i>
+            <div><strong>ECFMG Certified</strong> – Educational Commission for Foreign Medical Graduates</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Experience -->
+      <div class="info-card">
+        <h3><i class="fa-solid fa-briefcase-medical"></i> Experience & Honors</h3>
+        <ul>
+          <li>
+            <i class="fa-solid fa-hospital-user"></i>
+            <div><strong>KIMS Hospitals, Visakhapatnam</strong> – Consultant General Physician</div>
+          </li>
+          <li>
+            <i class="fa-solid fa-hospital-user"></i>
+            <div><strong>Queens NRI Hospital, Visakhapatnam</strong> – Consultant Physician (Since 2016)</div>
+          </li>
+          <li>
+            <i class="fa-solid fa-award"></i>
+            <div><strong>District Health & Family Welfare, Vizianagaram</strong> – Awarded Best Medical Officer for 2 consecutive years</div>
+          </li>
+          <li>
+            <i class="fa-solid fa-chalkboard-user"></i>
+            <div><strong>Academic Leadership:</strong> Regional Trainer for RNTCP, Mentor for PG & MBBS students</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Clinical Expertise Grid -->
+    <div class="sec-title" style="margin-top: 30px;">
+      <h2>Areas of Clinical Expertise</h2>
+      <p>Comprehensive primary care, acute disease intervention, and chronic wellness</p>
+    </div>
+
+    <div class="expertise-grid">
+      <div class="exp-box">
+        <i class="fa-solid fa-virus-covid"></i>
+        <h4>Tropical Fevers & Infections</h4>
+        <p>Diagnosis & protocol management for Dengue, Typhoid, Malaria, and Scrub Typhus.</p>
+      </div>
+
+      <div class="exp-box">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <h4>Chronic Disease Management</h4>
+        <p>Comprehensive lifestyle care for Diabetes, Hypertension, CKD, and Congestive Heart Failure.</p>
+      </div>
+
+      <div class="exp-box">
+        <i class="fa-solid fa-bone"></i>
+        <h4>Rheumatology & Autoimmune</h4>
+        <p>Specialized diagnosis for SLE, Sjogren’s syndrome, and Rheumatoid Arthritis.</p>
+      </div>
+
+      <div class="exp-box">
+        <i class="fa-solid fa-dna"></i>
+        <h4>Endocrinology Disorders</h4>
+        <p>Hormonal assessment for Thyroid disorders, Cushing's, and Addison's disease.</p>
+      </div>
+
+      <div class="exp-box">
+        <i class="fa-solid fa-skull-crossbones"></i>
+        <h4>Toxicology & Bites</h4>
+        <p>Emergency care for OP compound poisoning, snakebites, and scorpion stings.</p>
+      </div>
+
+      <div class="exp-box">
+        <i class="fa-solid fa-truck-medical"></i>
+        <h4>MICU & Emergencies</h4>
+        <p>Acute intervention in Pulmonary Embolism, Stroke, DKA, and Ventilator management.</p>
+      </div>
+    </div>
+
+    <!-- WhatsApp Health Awareness Group Callout -->
+    <div class="community-box">
+      <div>
+        <h3>Join Dr. Sravanthi’s Health Community</h3>
+        <p>Get reliable nutrition guidance, debunk health fads, and learn preventive lifestyle habits directly from Dr. Sravanthi.</p>
+      </div>
+      <a href="https://wa.me/919052560661?text=Hi%20Doctor,%20I%20would%20like%20to%20join%20the%20Dr.%20Sravanthi%20Health%20Awareness%20community." target="_blank" class="btn-community">
+        <i class="fa-brands fa-whatsapp"></i> Join WhatsApp Group
+      </a>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section class="section" style="background: var(--bg-alt); max-width: 100%; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div style="max-width: 1150px; margin: auto;">
+      <div class="sec-title">
+        <h2>Health Awareness Videos</h2>
+        <p>Watch clinical health awareness videos and patient discussions</p>
+      </div>
+
+      <div class="media-grid">
+        <!-- Video 1 -->
+        <div class="media-card">
+          <div class="media-thumb">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&auto=format&fit=crop&q=80" alt="Clinical Discussion Video" />
+            <a href="https://youtu.be/HUKLj6rE9t8?si=eBnyLd-UxUHdN5HU" target="_blank" class="play-btn">
+              <i class="fa-solid fa-play"></i>
+            </a>
+          </div>
+          <div class="media-content">
+            <h4>Clinical Talk with Dr. T. Sravanthi</h4>
+            <p>Essential medical insights on early symptoms, diagnosis, and preventive care.</p>
+            <a href="https://youtu.be/HUKLj6rE9t8?si=eBnyLd-UxUHdN5HU" target="_blank" class="media-link">
+              Watch on YouTube <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Instagram Reels Feed Promo -->
+        <div class="media-card">
+          <div class="media-thumb" style="background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);">
+            <div style="display:flex; height:100%; align-items:center; justify-content:center; color:#fff; font-size:3.5rem;">
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+          </div>
+          <div class="media-content">
+            <h4>Follow @sravanthi.turpati on Instagram</h4>
+            <p>Bite-sized health updates, diet fads vs facts, and daily wellness tips.</p>
+            <a href="https://www.instagram.com/sravanthi.turpati?stkn=OTZlbms1enhmbGVj" target="_blank" class="media-link">
+              Visit Instagram Profile <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BOOKING MODAL ================= -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3>Book Consultation</h3>
+          <p>Schedule an OP slot with Dr. T. Sravanthi</p>
+        </div>
+        <button class="btn-close" onclick="closeBookingModal()">&times;</button>
+      </div>
+
+      <form id="appointmentForm" onsubmit="handleBookingSubmit(event)">
+        <div class="form-group">
+          <label for="ptName">Patient Name *</label>
+          <input type="text" id="ptName" placeholder="e.g. Anand Sharma" required />
+        </div>
+
+        <div class="form-group">
+          <label for="ptPhone">Mobile Number *</label>
+          <input type="tel" id="ptPhone" placeholder="e.g. 9876543210" pattern="[0-9]{10}" required />
+        </div>
+
+        <div class="form-group">
+          <label for="ptLocation">Consultation Type *</label>
+          <select id="ptLocation" required>
+            <option value="KIMS Hospitals, Seethammadhara">KIMS Hospitals, Seethammadhara (Vizag)</option>
+            <option value="Online Video Consultation">Online Video Consultation</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ptDate">Preferred Date *</label>
+            <input type="date" id="ptDate" required />
+          </div>
+
+          <div class="form-group">
+            <label for="ptTime">OP Time Slot *</label>
+            <select id="ptTime" required>
+              <option value="10:00 AM - 12:00 PM">10:00 AM - 12:00 PM</option>
+              <option value="12:00 PM - 02:00 PM">12:00 PM - 02:00 PM</option>
+              <option value="02:00 PM - 04:00 PM">02:00 PM - 04:00 PM</option>
+              <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ptReason">Symptoms / Consultation Reason</label>
+          <textarea id="ptReason" rows="2" placeholder="e.g. Fever, Diabetes check, General health evaluation..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <i class="fa-brands fa-whatsapp"></i> Confirm via WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>Dr. T. Sravanthi</strong> &bull; Consultant General Physician</p>
+    <p style="margin-top: 5px;">KIMS Hospitals, Gurudwara Lane, Seethammadhara, Visakhapatnam - 530013</p>
+    <p style="margin-top: 5px;">Direct: 90525 60661 &bull; KIMS Desk: 0891 2827777 &bull; Email: <a href="mailto:drsravanthimd@gmail.com">drsravanthimd@gmail.com</a></p>
+    <p style="margin-top: 15px; font-size: 0.75rem; opacity: 0.6;">&copy; 2026 Dr. T. Sravanthi. All rights reserved.</p>
+  </footer>
+
+  <!-- Floating Pulsing WhatsApp Action Button -->
+  <button class="float-wa" onclick="openBookingModal()" title="Book Consultation">
+    <i class="fa-brands fa-whatsapp"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    const dateInput = document.getElementById('ptDate');
+    dateInput.min = new Date().toISOString().split('T')[0];
+    dateInput.value = new Date().toISOString().split('T')[0];
+
+    function openBookingModal() {
+      document.getElementById('bookingModal').classList.add('active');
+    }
+
+    function closeBookingModal() {
+      document.getElementById('bookingModal').classList.remove('active');
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('bookingModal');
+      if (event.target === modal) {
+        closeBookingModal();
+      }
+    };
+
+    function handleBookingSubmit(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('ptName').value.trim();
+      const phone = document.getElementById('ptPhone').value.trim();
+      const location = document.getElementById('ptLocation').value;
+      const date = document.getElementById('ptDate').value;
+      const time = document.getElementById('ptTime').value;
+      const reason = document.getElementById('ptReason').value.trim() || 'General Consultation';
+
+      const message = 
+`*CONSULTATION REQUEST FOR DR. T. SRAVANTHI* 🩺
+----------------------------------------
+👤 *Patient Name:* ${name}
+📞 *Mobile:* ${phone}
+🏥 *Center:* ${location}
+📅 *Preferred Date:* ${date}
+⏰ *Time Slot:* ${time}
+📝 *Symptoms / Reason:* ${reason}
+----------------------------------------
+_Booking sent via Dr. Sravanthi Online Portal_`;
+
+      const doctorNumber = "919052560661";
+      const whatsappURL = `https://wa.me/${doctorNumber}?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappURL, '_blank');
+      closeBookingModal();
+    }
+  </script>
+
+</body>
+</html>
